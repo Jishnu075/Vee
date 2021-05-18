@@ -2,4 +2,12 @@
 
 {% block content%}
 <h1 class="text text-success text-center">Home Page</h1>
+
+    {% for event in events %}
+        {{ event.title }}
+        {{ event.about_event }}
+        {{ event.date_posted }}
+    {% endfor%}
 {% endblock content%}
+
+
