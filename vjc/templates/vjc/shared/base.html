@@ -18,6 +18,13 @@
     </style>
 </head>
   <body>
+    {%if messages %}
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
     {% include 'vjc/shared/nav.html'%}
     {% block content%}
 
