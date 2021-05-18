@@ -19,7 +19,7 @@
                         {% render_field form.Emails class="form-control" %}
                     </div>
                     <div class ="form-group">
-                        <label>{{form.password1.label}}</label>
+                        <label>{{form.password.label}}</label>
                         {% render_field form.password1 class="form-control" %}
                     </div>
                     <div class ="form-group">
@@ -37,7 +37,7 @@
         </div>
         <div class="border-top pt-3">
             <small class="text-muted">
-                Already have an account? <a class="ml-2" href="#">Sign In</a>
+                Already have an account? <a class="ml-2" href="{% url 'web_login' %}">Sign In</a>
             </small>
         </div>
     </div>

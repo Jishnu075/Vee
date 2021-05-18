@@ -13,14 +13,30 @@
                 <a class="nav-link" href="{% url 'web_home' %}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'web_about' %}">About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'web_register' %}">Login/Register</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="#">Events</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'web_about' %}">About</a>
+            </li>
+
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link"  href="{% url 'web_profile' %}">Profile</a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link"  href="{% url 'web_logout' %}">Logout</a>
+                </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'web_register' %}">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'web_login' %}">Login</a>
+            </li>
+            {% endif %}
+           
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="text" placeholder="Search">
