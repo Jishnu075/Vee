@@ -13,9 +13,10 @@ def home(request):
 
 
 def about(request):
-	return HttpResponse('Sample about page')
 	return render(request, 'vjc/about.html')
 
+def login(request):
+	return render(request, 'users/register.html')
 
 
 
