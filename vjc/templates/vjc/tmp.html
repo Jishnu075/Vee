@@ -3,11 +3,16 @@
 {% block content%}
 <h1 class="text text-success text-center">Home Page</h1>
 
+{%if user.is_authenticated %}
+
+
     {% for event in events %}
         {{ event.title }}
         {{ event.about_event }}
         {{ event.date_posted }}
     {% endfor%}
+    
+{% endif %}
 {% endblock content%}
 
 
