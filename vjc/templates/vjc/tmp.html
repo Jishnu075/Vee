@@ -2,17 +2,20 @@
 
 {% block content%}
 <h1 class="text text-success text-center">Home Page</h1>
+<div>
+    {%if user.is_authenticated %}
 
-{%if user.is_authenticated %}
 
-
-    {% for event in events %}
-        {{ event.title }}
-        {{ event.about_event }}
-        {{ event.date_posted }}
-    {% endfor%}
+        {% for event in events %}
+            <a href="{% url 'web_events_detail' event.id %}">{{ event.title }}</a> 
+            {{ event.about_event }}
+            {{ event.date_posted }}
+        {% endfor%}
     
-{% endif %}
+    {% endif %}
+
+</div>
+
 {% endblock content%}
 
 

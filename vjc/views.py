@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from .models import Events
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 def home(request):
 	
@@ -20,9 +21,44 @@ def login(request):
 
 
 
-# def log_reg (request):
+
+class EventListView(ListView):
+	model = Events
+	template_name = 'vjc/tmp.html'
+	context_object_name = 'events'
+	ordering = ['-date_posted']
+
+class EventDetailView(DetailView):
+	model = Events
 	
+class EventCreateView(LoginRequiredMixin,CreateView):
+	model = Events
+	fields = ['title', 'about_event']
 
+	def form_valid(self, form):
+		form.instance.organiser = self.request.user
+		return super().form_valid(form)
 
+class EventUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+	model = Events
+	fields = ['title', 'about_event']
 
-# Create your views here.
+	def form_valid(self, form):
+		form.instance.organiser = self.request.user
+		return super().form_valid(form)
+	
+	def test_func(self):
+		events = self.get_object()
+		if self.request.user == events.organiser:
+			return True
+		return False
+
+class EventDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+	model = Events
+	success_url = '/'
+
+	def test_func(self):
+		events = self.get_object()
+		if self.request.user == events.organiser:
+			return True
+		return False
