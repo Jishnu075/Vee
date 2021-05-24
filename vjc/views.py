@@ -2,6 +2,13 @@ from django.shortcuts import render
 from .models import Events
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.conf import settings
+from django.http import HttpResponse, HttpResponseRedirect
+from django.core.mail import send_mail
+from users.models import Profile
+
+
+
 
 def home(request):
 	
@@ -62,3 +69,14 @@ class EventDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 		if self.request.user == events.organiser:
 			return True
 		return False
+
+#rsvp
+def send(request, pk):
+	user = Profile.objects.filter(user = request.user)
+    # subject = "Site contact form"
+    # from_email = settings.EMAIL_HOST_USER
+    # to_email = ['user.email']
+    # contact_msg = "check out rsvp app"
+    # send_mail(subject, contact_msg, from_email, to_email, fail_silently=False)
+    # return HttpResponse("on send email page")
+	print(user.username)
