@@ -1,1 +1,1 @@
-web: gunicorn vee.wsgi
+web: gunicorn VEE.wsgi
