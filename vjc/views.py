@@ -5,7 +5,8 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.mail import send_mail
-from users.models import Profile
+from django.urls import reverse_lazy
+from users import *
 
 
 
@@ -38,6 +39,7 @@ class EventListView(ListView):
 class EventDetailView(DetailView):
 	model = Events
 	
+	
 class EventCreateView(LoginRequiredMixin,CreateView):
 	model = Events
 	fields = ['title', 'about_event']
@@ -62,7 +64,7 @@ class EventUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 class EventDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	model = Events
-	success_url = '/'
+	success_url = reverse_lazy('web_home')
 
 	def test_func(self):
 		events = self.get_object()
@@ -72,11 +74,9 @@ class EventDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 #rsvp
 def send(request, pk):
-	user = Profile.objects.filter(user = request.user)
-    # subject = "Site contact form"
-    # from_email = settings.EMAIL_HOST_USER
-    # to_email = ['user.email']
-    # contact_msg = "check out rsvp app"
-    # send_mail(subject, contact_msg, from_email, to_email, fail_silently=False)
-    # return HttpResponse("on send email page")
-	print(user.username)
+	subject = "Site contact form"
+	from_email = settings.EMAIL_HOST_USER
+	to_email = [request.user.email]
+	contact_msg = "check out rsvp app"
+	send_mail(subject, contact_msg, from_email, to_email, fail_silently=False)
+	return HttpResponse("on send email page")
