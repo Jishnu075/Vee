@@ -16,7 +16,7 @@ def home(request):
 	context = {
 		'events': Events.objects.all()
 	}
-
+	Events
 
 	return render(request, 'vjc/tmp.html', context)
 
@@ -42,7 +42,7 @@ class EventDetailView(DetailView):
 	
 class EventCreateView(LoginRequiredMixin,CreateView):
 	model = Events
-	fields = ['title', 'about_event']
+	fields = ['title', 'about_event', 'invite_link', 'event_loc']
 
 	def form_valid(self, form):
 		form.instance.organiser = self.request.user
@@ -74,9 +74,16 @@ class EventDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 #rsvp
 def send(request, pk):
-	subject = "Site contact form"
+	subject = "Invitation for  Event"
 	from_email = settings.EMAIL_HOST_USER
 	to_email = [request.user.email]
-	contact_msg = "check out rsvp app"
+	
+	contact_msg = "You have been successfully invited to the event!"
 	send_mail(subject, contact_msg, from_email, to_email, fail_silently=False)
-	return HttpResponse("on send email page")
+
+	# pk_url_kwargs = 'pk'
+
+	# event = Events.objects.filter(pk = pk)
+	# print(event.count())
+
+	return HttpResponse("Check your mail!")

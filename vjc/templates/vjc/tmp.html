@@ -1,20 +1,23 @@
 {% extends 'vjc/shared/base.html'%}
 
 {% block content%}
-<h1 class="text text-success text-center">Home Page</h1>
-<div>
-    {%if user.is_authenticated %}
-
-
-        {% for event in events %}
-            <a href="{% url 'web_events_detail' event.id %}">{{ event.title }}</a> 
-            {{ event.about_event }}
-            {{ event.date_posted }}
-        {% endfor%}
+<div class="container">
+<h1 class="text text-success text-center ">Events</h1>
     
+    {%if user.is_authenticated %}
+            {% for event in events %}
+            <div class=" mb-5 border-bottom rounded">
+                <h2><a class="article-title" href="{% url 'web_events_detail' event.id %}">{{ event.title }}</a></h2>
+                <small class="text-muted">{{ event.date_posted }}</small>
+            </div>
+        {% endfor%}  
+
+    {% else %}
+            
+            <h2 class="text text-danger text-center">Register/Login First</h2>
+                 
     {% endif %}
 
-</div>
 
 {% endblock content%}
 

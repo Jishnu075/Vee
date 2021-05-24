@@ -3,19 +3,41 @@
 {% block content%}
 {% load crispy_forms_tags %}
 
-    <div class="content-selection">
+    <div class="container">
             <form method="POST">
                 {% csrf_token %}
                 <fieldset class="form-group">
-                    <legend class="border-bottom mb-4">Create an Event</legend>
-                    {{ form|crispy }}
-                </fieldset>
+                    <h4 class="border-bottom mb-4 text-center">Create an Event</h4>
+                        <div class="row mt-1">
+                            <div class="col-sm-6 offset-sm-3">
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    
+                                    <div class ="form-group">
+                                        <label>{{form.title.label}}</label>
+                                        {% render_field form.title class="form-control" %}
+                                    </div>
+                                    <div class ="form-group">
+                                        <label>{{form.about_event.label}}</label>
+                                        {% render_field form.about_event class="form-control" %}
+                                    </div>
+                                    <div class ="form-group">
+                                        <label>{{form.invite_link.label}}</label>
+                                        {% render_field form.invite_link class="form-control" %}
+                                    </div>
+                                    <div class ="form-group">
+                                        <label>{{form.event_loc.label}}</label>
+                                        {% render_field form.event_loc class="form-control" %}
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                 <div class ="form-group mt-3 d-flex">
-                        <button class = "btn btn-success" type ="submit">Create</button>
+                        <button class = "btn btn-success ml-auto" type ="submit">Create</button>
                         <!-- <button class = "btn btn-danger ml-auto" type ="reset">Reset</button> -->
                 </div>        
             </form>       
-                   
+        </fieldset>          
     </div>                 
                 
             

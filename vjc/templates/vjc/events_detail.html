@@ -1,20 +1,23 @@
 {% extends 'vjc/shared/base.html'%}
 
 {% block content%}
-<h3 class="text text-success text-center">About Event</h3>
+<div class="container">
+
+<h3 class="text text-success text-center pb-5">About Event</h3>
  
-<div>
     {%if user.is_authenticated %}
-        {{ object.title }}
+
+        <h2 class="text mb-3"><U>{{ object.title}}</U></h2>
         {{ object.about_event }}
-        {{ object.date_posted }}  
+        <small class="text-muted">{{ object.date_posted}}</small>
+        <h6 class="text mb-4">Organized By {{ object.organiser}}</h6> 
         {% if object.organiser == user %}
             <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'web_events_update' object.id %}">Update</a>
             <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'web_events_delete' object.id %}">Delete</a>
         {% else %}
             <a class="btn btn-success btn-sm mt-1 mb-1" href="{% url 'web_events_rsvp' object.id %}">RSVP</a>
         {% endif%}
-        {{ object.organiser }}         
+        
     {% endif %}
 
 </div>

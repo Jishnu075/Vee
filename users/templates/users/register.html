@@ -3,9 +3,9 @@
 {% block content%}
 
 
-<h1 class ="text text-center text-danger">Join Now</h1>>
+<h1 class ="text text-center text-danger mt-2">Join Now</h1>>
     <div class= "container">
-        <div class="row mt-5">
+        <div class="row mt-1">
             <div class="col-sm-6 offset-sm-3">
                 <form method="POST">
                     {% csrf_token %}
@@ -13,25 +13,30 @@
                     <div class ="form-group">
                         <label>{{form.username.label}}</label>
                         {% render_field form.username class="form-control" %}
+                        {{form.errors.username}}
                     </div>
                     <!-- <div class ="form-group">
-                        <label>{{form.email1.label}}</label>
-                        {% render_field form.Emails class="form-control" %}
+                        <label>{{form.email.label}}</label>
+                        {% render_field form.email class="form-control" %}
+                        {{form.errors.email}}
                     </div> -->
                     <div class ="form-group">
-                        <label>{{form.password.label}}</label>
+                        <label>{{form.password1.label}}</label>
                         {% render_field form.password1 class="form-control" %}
+                        {{form.errors.password1}}
                     </div>
                     <div class ="form-group">
                         <label>{{form.password2.label}}</label>
                         {% render_field form.password2 class="form-control" %}
+                        {{form.errors.password2}}
                     </div>
                     
-        
                     <div class ="form-group mt-3 d-flex">
                         <button class = "btn btn-success" type ="submit">Register</button>
                         <button class = "btn btn-danger ml-auto" type ="reset">Reset</button>
                     </div>
+
+                    <div class="alert alert-danger text text-center"> Update email after Registration!</div>
                 </form>
             </div>
         </div>
