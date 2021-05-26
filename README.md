@@ -9,7 +9,9 @@ BFH/recdsYF6PP3uZp6cG/2021
 ## Link to product walkthrough
 https://www.loom.com/share/f1f98aef2e704975bee28d3c4fdfac41
 ## How it Works ?
-1. Step 1 : install the requirments.txt
-3. Step 2 : run 'python manage.py runserver'
+1. Step 1 : clone/download the project
+2. Step 2 : Create a virtualenv and install the dependencies with 'pip install -r requirements.txt' 
+3. Step 2 : Configure your .env variables.
+4. Step 3 : run 'python manage.py runserver'
 
 
