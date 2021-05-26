@@ -50,7 +50,7 @@ class EventCreateView(LoginRequiredMixin,CreateView):
 
 class EventUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = Events
-	fields = ['title', 'about_event']
+	fields = ['title', 'about_event', 'event_loc']
 
 	def form_valid(self, form):
 		form.instance.organiser = self.request.user
@@ -77,13 +77,6 @@ def send(request, pk):
 	subject = "Invitation for  Event"
 	from_email = settings.EMAIL_HOST_USER
 	to_email = [request.user.email]
-	
 	contact_msg = "You have been successfully invited to the event!"
 	send_mail(subject, contact_msg, from_email, to_email, fail_silently=False)
-
-	# pk_url_kwargs = 'pk'
-
-	# event = Events.objects.filter(pk = pk)
-	# print(event.count())
-
 	return HttpResponse("Check your mail!")
