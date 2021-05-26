@@ -17,7 +17,7 @@ def register(request):
             return redirect('web_login')
 
     else:
-        form = UserCreationForm()
+        form = UserRegisterForm()
     
     return render(request, 'users/register.html', {'form': form})
 
