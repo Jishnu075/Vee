@@ -9,7 +9,7 @@ BFH/recdsYF6PP3uZp6cG/2021
 ## Link to product walkthrough
 https://www.loom.com/share/0678ca269d3e47a590aaa8cd812d0010
 ## How it Works ?
-1. Step 1 : install the requirments
-2. Step 2 : run 'python manage.py runserver'
+1. Step 1 : install the requirments.txt
+3. Step 2 : run 'python manage.py runserver'
 
 
