@@ -1,1 +1,15 @@
-# Vee
+![BFH Banner](https://trello-attachments.s3.amazonaws.com/542e9c6316504d5797afbfb9/542e9c6316504d5797afbfc1/39dee8d993841943b5723510ce663233/Frame_19.png)
+# Project Name: VEE
+VEE is an event portal for college where user can register for events with unique accounts.
+## Team members
+1. Jishnu Biju https://github.com/Jishnu075
+2. Prince Joy https://github.com/princejoy777
+## Team Id
+BFH/recdsYF6PP3uZp6cG/2021
+## Link to product walkthrough
+https://www.loom.com/share/0678ca269d3e47a590aaa8cd812d0010
+## How it Works ?
+1. Step 1 : install the requirments
+2. Step 2 : run 'python manage.py runserver'
+
+
