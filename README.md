@@ -6,10 +6,7 @@ VEE is an event portal for college where user can register for events with uniqu
 2. Prince Joy https://github.com/princejoy777
 ## Team Id
 BFH/recdsYF6PP3uZp6cG/2021
-## Link to product walkthrough
-https://www.loom.com/share/f1f98aef2e704975bee28d3c4fdfac41
 
-https://www.loom.com/share/660a5bf935da4850ba3b3aef61526f09
 ## How it Works ?
 1. Step 1 : clone/download the project
 2. Step 2 : Create a virtualenv and install the dependencies with 'pip install -r requirements.txt' 
